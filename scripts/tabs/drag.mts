@@ -1,4 +1,4 @@
-import tabs, {Tab} from '../tabs.mjs'
+import tabs, {Tab} from '../tabs.mjs';
 import SimpleEvent from '../simple-event.mjs';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -33,10 +33,10 @@ function moveTabs(mainTab: Tab, goTo: number) {
 			ofsetX = width;
 
 		tab.element.style.transition = 'transform 0.2s';
-		tab.element.style.transform = 'translate('+ofsetX+'px, 0px)';
+		tab.element.style.transform = `translate(${ofsetX}px, 0px)`;
 
 		tab.separator.style.transition = 'transform 0.2s, opacity 0.2s';
-		tab.separator.style.transform = 'translate('+ofsetX+'px, 0px)';
+		tab.separator.style.transform = `translate(${ofsetX}px, 0px)`;
 		tab.separator.style.opacity = hideSeparators.includes(tab.position) ? '0' : '1';
 	}
 
@@ -71,7 +71,7 @@ function add(id: number) {
 
 		return tabs.tabWidth + 6;
 
-	}
+	};
 
 	const simpleEvent = new SimpleEvent(tab.element);
 	simpleEvent.horizontal({min: -999999999, max: 999999999, size: width, speed: false, multiple: true}, async function(event, data) {
@@ -99,7 +99,7 @@ function add(id: number) {
 		{
 			if(prevDragging) return;
 
-			tab.element.style.transform = 'translate('+data.diffX+'px, 0px)';
+			tab.element.style.transform = `translate(${data.diffX}px, 0px)`;
 
 			moveTabs(tab, goToX);
 		}
@@ -117,7 +117,7 @@ function add(id: number) {
 				_goToX = tab.position;
 
 			tab.element.style.transition = 'transform 0.2s';
-			tab.element.style.transform = 'translate('+(-_goToX * width())+'px, 0px)';
+			tab.element.style.transform = `translate(${(-_goToX * width())}px, 0px)`;
 			tab.element.style.zIndex = '';
 
 			await app.sleep(200);

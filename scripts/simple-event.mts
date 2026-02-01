@@ -5,8 +5,8 @@ declare const app: any;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 const beziers = {
-	easeInBezier: new Bezier(0,0, 0.4,0, 1,1, 1,1),
-	bounce: new Bezier(0,0, 0.3,0.75, 0.8,1, 1,1),
+	easeInBezier: new Bezier(0, 0, 0.4, 0, 1, 1, 1, 1),
+	bounce: new Bezier(0, 0, 0.3, 0.75, 0.8, 1, 1, 1),
 };
 
 interface SimpleEventOptions {
@@ -154,7 +154,7 @@ export default class SimpleEvent {
 
 					if(!this.#current.active)
 					{
-						//this.element.onpointermove = null;
+						// this.element.onpointermove = null;
 						app.eventOff(this.element, 'pointermove', this.move, {passive: false});
 						(this.element as HTMLElement).releasePointerCapture(event.pointerId);
 					}
@@ -172,7 +172,7 @@ export default class SimpleEvent {
 					}
 				}
 			}
-			
+
 			// Run callback
 			if(this.#current.active)
 			{
@@ -195,7 +195,7 @@ export default class SimpleEvent {
 					diffX: this.diff((x - this.#current.start!.x) + this.diffX),
 					diffY: this.diff((y - this.#current.start!.y) + this.diffY),
 					speedX: this.speedX(),
-					speedY: this.speedY(), 
+					speedY: this.speedY(),
 				};
 
 				data.goToX = this.goTo(data, 'diffX');

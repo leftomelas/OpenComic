@@ -1,4 +1,3 @@
-
 type Page = boolean | 'languages' | 'theme' | 'settings';
 
 export interface Filter {

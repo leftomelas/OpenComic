@@ -28,9 +28,9 @@ interface AuthData {
 	uri?: string;
 }
 
-/*interface Headers {
+/* interface Headers {
 	Authorization?: string;
-}*/
+} */
 
 class OpdsAuth
 {
@@ -168,7 +168,7 @@ async function requestCredentials(response: Response, forceCredentials: boolean 
 	if(!currentCatalog.user || !currentCatalog.pass || forceCredentials)
 	{
 		const promise = new Promise<void>(function(resolve, reject) {
-			
+
 			credentialsResolve = resolve;
 			credentialsReject = reject;
 
@@ -182,7 +182,7 @@ async function requestCredentials(response: Response, forceCredentials: boolean 
 		}
 		catch
 		{
-			throw new Error('Invalid credentials: '+response.status+' '+response.statusText);
+			throw new Error(`Invalid credentials: ${response.status} ${response.statusText}`);
 		}
 	}
 
@@ -228,7 +228,7 @@ function requestCredentialsDialog(siteName: string | boolean = false, save: bool
 				{
 					text: language.buttons.login,
 					function: 'opds.auth.requestCredentialsDialog(false, true); events.closeDialog();',
-				}
+				},
 			],
 		});
 
@@ -238,8 +238,8 @@ function requestCredentialsDialog(siteName: string | boolean = false, save: bool
 
 function basic(data: AuthData): string
 {
-	const auth = btoa(data.user+':'+data.pass);
-	return 'Basic '+auth;
+	const auth = btoa(`${data.user}:${data.pass}`);
+	return `Basic ${auth}`;
 }
 
 let nonceCount = 0;
@@ -275,26 +275,27 @@ function digest(data: AuthData): string
 	const sess = /sess/.test(data.algorithm) ? true : false;
 	const _nonceCount = hex8(nonceCount);
 
-	const hash1 = crypto.hash(algorithm, data.user+':'+data.realm+':'+data.pass, 'hex');
-	const hash2 = crypto.hash(algorithm, (data.qop === 'auth-int' ? '' : 'GET:'+data.uri), 'hex');
-	const hash3 = sess ? crypto.hash(algorithm, hash1+':'+data.nonce+':'+data.cnonce, 'hex') : hash1;
+	const hash1 = crypto.hash(algorithm, `${data.user}:${data.realm}:${data.pass}`, 'hex');
+	const hash2 = crypto.hash(algorithm, `${data.qop === 'auth-int' ? '' : `GET:${data.uri}`}`, 'hex');
+	const hash3 = sess ? crypto.hash(algorithm, `${hash1}:${data.nonce}:${data.cnonce}`, 'hex') : hash1;
 
 	let response;
 
 	if(data.qop === 'auth' || data.qop === 'auth-int')
-		response = crypto.hash(algorithm, hash3+':'+data.nonce+':'+_nonceCount+':'+data.cnonce+':'+data.qop+':'+hash2, 'hex');
+		response = crypto.hash(algorithm, `${hash3}:${data.nonce}:${_nonceCount}:${data.cnonce}:${data.qop}:${hash2}`, 'hex');
 	else
-		response = crypto.hash(algorithm, hash3+':'+data.nonce+':'+hash2, 'hex');
+		response = crypto.hash(algorithm, `${hash3}:${data.nonce}:${hash2}`, 'hex');
 
-	const auth = 'username="'+data.user+'", realm="'+data.realm+'", nonce="'+data.nonce+'", uri="'+data.uri+'", algorithm='+data.algorithm+', response="'+response+'", qop='+data.qop+', nc='+_nonceCount+', cnonce="'+data.cnonce+'"';
-	return 'Digest '+auth;
+	const auth = `username="${data.user}", realm="${data.realm}", nonce="${data.nonce}", uri="${data.uri}", algorithm=${data.algorithm}, response="${response}", qop=${data.qop}, nc=${_nonceCount}, cnonce="${data.cnonce}"`;
+	return `Digest ${auth}`;
+
 }
 
 const auths = new Map<string, OpdsAuth>();
 
 function getAuth(key: string, auth: Auth): OpdsAuth
 {
-	key = key+'|'+auth.user+'|'+auth.pass;
+	key = `${key}|${auth.user}|${auth.pass}`;
 
 	if(!auths.has(key))
 		auths.set(key, new OpdsAuth(auth));
@@ -311,4 +312,4 @@ export default {
 	requestCredentials: requestCredentials,
 	requestCredentialsDialog: requestCredentialsDialog,
 	OpdsAuth: OpdsAuth,
-};	
+};

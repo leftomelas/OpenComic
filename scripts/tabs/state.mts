@@ -1,4 +1,4 @@
-import {History} from '@types'
+import {History} from '@types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare const reading: any;
@@ -53,4 +53,4 @@ function set(history: History, data: any): void
 export default {
 	get,
 	set,
-}
+};

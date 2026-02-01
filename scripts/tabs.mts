@@ -66,7 +66,7 @@ function add(tab: Partial<Tab>, isComic = false): number
 		data: {
 			scrollTop: 0,
 			history: tab?.data?.history ?? dom.history.serialize(),
-			// firstLoad: 
+			// firstLoad: ,
 		},
 	};
 
@@ -187,7 +187,7 @@ function openPath(path: string, mainPath: string)
 
 	return add({
 		title: dom.metadataPathName({path: path, name: file, compressed}),
-		data: {history, scrollTop: 0}
+		data: {history, scrollTop: 0},
 	});
 }
 
@@ -206,7 +206,7 @@ function openTab(title: string, icon: string, historyList: HistoryItem[])
 	return add({
 		title,
 		icon,
-		data: {history, scrollTop: 0}
+		data: {history, scrollTop: 0},
 	});
 }
 
@@ -366,7 +366,6 @@ async function close(id: number): Promise<void>
 	visibility();
 }
 
-
 function middleClickOpen(event: MouseEvent, path: string, mainPath: string): void
 {
 	if(event.button !== 1) return;
@@ -449,7 +448,7 @@ function setTabWidth()
 		tabWidth = 90;
 
 	currentTabWidth = tabWidth;
-	_app.style.setProperty('--tabs-bar-tab-width', tabWidth+'px');
+	_app.style.setProperty('--tabs-bar-tab-width', tabWidth + 'px');
 }
 
 function setTabPositions()
@@ -522,8 +521,8 @@ function start(openLastActiveTab: boolean = false): void
 
 		tabsBar.classList.add('disable-transitions');
 		setTabWidth();
-		
-		ST = setTimeout(function(){
+
+		ST = setTimeout(function() {
 
 			tabsBar.classList.remove('disable-transitions');
 
@@ -548,18 +547,18 @@ export default {
 	middleClickClose,
 	close,
 	mouseLeave,
-	get tabWidth(){return currentTabWidth},
+	get tabWidth() {return currentTabWidth},
 	get activeTab(): Tab | undefined {return tabs.find(t => t.active)},
 
-	get tabs(){return tabs},
-	get idCounter(){return idCounter},
-	get lastUsedTabs(){return lastUsedTabs},
-	set tabs(val: Tab[]){tabs = val},
-	set idCounter(val: number){idCounter = val},
-	set lastUsedTabs(val: number[]){lastUsedTabs = val},
+	get tabs() {return tabs},
+	get idCounter() {return idCounter},
+	get lastUsedTabs() {return lastUsedTabs},
+	set tabs(val: Tab[]) {tabs = val},
+	set idCounter(val: number) {idCounter = val},
+	set lastUsedTabs(val: number[]) {lastUsedTabs = val},
 
 	setTabPositions,
 	visibility,
 	start,
 	restore,
-}
+};

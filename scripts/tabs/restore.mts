@@ -66,7 +66,7 @@ function restore(openLastActiveTab: boolean = false): void {
 
 	let idCounter = data.idCounter;
 
-	const _tabs: Partial<Tab>[] = data.list.map(function(tab: TabSaved): Partial<Tab>{
+	const _tabs: Partial<Tab>[] = data.list.map(function(tab: TabSaved): Partial<Tab> {
 
 		return {
 			...tab,
@@ -155,7 +155,7 @@ function rootPage(current: any): boolean {
 
 		return false;
 
-	}
+	};
 
 	const hlaf = hasLabelsAndFilters(current.indexLabel);
 

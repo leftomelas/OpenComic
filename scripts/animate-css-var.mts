@@ -1,7 +1,7 @@
 import {Bezier} from 'bezier-js';
 
 const beziers = {
-	easeInBezier: new Bezier(0,0, 0.4,0, 1,1, 1,1),
+	easeInBezier: new Bezier(0, 0, 0.4, 0, 1, 1, 1, 1),
 };
 
 export interface AnimateCssVar {
@@ -29,7 +29,7 @@ export default function animateCssVar({name, from, to, unit = 'px', duration = 3
 		const m = Math.min(elapsed / duration, 1);
 		const mBezier = beziers[bezier].get(m).y;
 
-		_app.style.setProperty(`--${name}`, String(from + (to - from) * mBezier)+unit);
+		_app.style.setProperty(`--${name}`, String(from + (to - from) * mBezier) + unit);
 
 		if(elapsed < duration)
 		{
