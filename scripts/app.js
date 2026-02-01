@@ -508,10 +508,18 @@ function degIs(type, deg) {
 	return rules[type]?.() ?? false;
 }
 
+function text(string) {
+
+	const tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
+	return string.replace(tags, '');
+
+}
+
 module.exports = {
 	event: event,
 	eventOff: eventOff,
 	empty: empty,
+	text: text,
 	extname: extname,
 	extnameC: extnameC,
 	round: round,

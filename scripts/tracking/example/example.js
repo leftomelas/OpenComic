@@ -33,7 +33,7 @@ async function searchComic(title)
 	// const response = await fetch('url', options);
 	// const json = await response.json();
 
-	results = [];
+	const results = [];
 
 	results.push({
 		id: 0, // Comic id in site

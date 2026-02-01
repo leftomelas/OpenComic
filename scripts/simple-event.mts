@@ -1,6 +1,8 @@
 import {Bezier} from 'bezier-js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const app: any;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 const beziers = {
 	easeInBezier: new Bezier(0,0, 0.4,0, 1,1, 1,1),
@@ -29,7 +31,7 @@ interface SpeedData {
 interface CurrentState {
 	id?: number;
 	first?: boolean;
-	start?: { x: number; y: number };
+	start?: {x: number; y: number};
 	speed?: SpeedData[];
 	active?: boolean;
 }

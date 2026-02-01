@@ -1,11 +1,13 @@
 import crypto from 'node:crypto';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const events: any;
 declare const hb: any;
 declare const language: any;
 declare const opds: any;
 declare const storage: any;
 declare const template: any;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 interface Auth {
 	auth: string;
@@ -26,9 +28,9 @@ interface AuthData {
 	uri?: string;
 }
 
-interface Headers {
+/*interface Headers {
 	Authorization?: string;
-}
+}*/
 
 class OpdsAuth
 {
@@ -140,13 +142,13 @@ function parseAuth(auth: string): AuthData
 	for(let i = 0, len = matches.length; i < len; i++)
 	{
 		const match = matches[i];
-		let key = match[1].toLowerCase();
+		const key = match[1].toLowerCase();
 		let value = match[2];
 
 		if(key && value)
 		{
 			value = value.replace(/^['"]/, '');
-			if(key !== 'realm') value.replace(/\,.*$/, '');
+			if(key !== 'realm') value.replace(/,.*$/, '');
 
 			data[match[1]] = value;
 		}
@@ -155,7 +157,7 @@ function parseAuth(auth: string): AuthData
 	return data;
 }
 
-var credentialsResolve, credentialsReject;
+let credentialsResolve, credentialsReject;
 
 async function requestCredentials(response: Response, forceCredentials: boolean = false): Promise<boolean>
 {
@@ -240,7 +242,7 @@ function basic(data: AuthData): string
 	return 'Basic '+auth;
 }
 
-var nonceCount = 0;
+let nonceCount = 0;
 
 function hex8(number: number): string
 {

@@ -750,8 +750,6 @@ async function loadIndexPage(animation = true, path = false, content = false, ke
 		{
 			for(let path of masterFolders)
 			{
-				path = path;
-
 				if(fs.existsSync(path) && (!_indexLabel.masterFolder || _indexLabel.masterFolder == path) && !_indexLabel.server)
 				{
 					let file = fileManager.file(path);

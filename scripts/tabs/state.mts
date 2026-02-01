@@ -1,5 +1,6 @@
-import {History, HistoryItem} from '@types'
+import {History} from '@types'
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const reading: any;
 declare const settings: any;
 

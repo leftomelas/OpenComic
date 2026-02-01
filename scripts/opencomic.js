@@ -1246,7 +1246,7 @@ hb.registerHelper('ifOr', function() {
 
 	for(let i = 0, len = arguments.length - 1; i < len; i++)
 	{
-		if(!playmax.empty(arguments[i]))
+		if(!app.empty(arguments[i]))
 			return options.fn(this);
 	}
 

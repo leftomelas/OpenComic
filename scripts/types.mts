@@ -23,7 +23,7 @@ export interface IndexLabel {
 
 export interface HistoryItem {
 	file: string | boolean;
-	indexLabel: IndexLabel | {};
+	indexLabel: IndexLabel | object;
 	isComic: boolean;
 	mainPath: string | boolean;
 	path: string | boolean;

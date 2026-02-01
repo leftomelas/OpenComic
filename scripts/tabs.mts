@@ -5,8 +5,8 @@ import restore from './tabs/restore.mjs';
 
 import {History, HistoryItem} from '@types';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const p: any;
-declare const hb: any;
 declare const app: any;
 declare const dom: any;
 declare const template: any;
@@ -16,13 +16,14 @@ declare const reading: any;
 declare const events: any;
 declare const handlebarsContext: any;
 declare const onReading: boolean;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 export type TabType = 'normal' | 'reading';
 
 export interface TabData {
 	scrollTop: number;
 	history: History;
-	data?: any;
+	data?: unknown;
 }
 
 export interface Tab {
@@ -259,7 +260,7 @@ function _update(retrieveData: boolean = false): void
 
 	const type = onReading ? 'reading' : 'normal';
 
-	update(activeTab.id, {icon, title}, retrieveData);
+	update(activeTab.id, {icon, title, type}, retrieveData);
 	restore.save();
 }
 
@@ -291,6 +292,9 @@ let goTabST: NodeJS.Timeout | false = false;
 
 async function goTab(tab: Tab): Promise<void>
 {
+	if(goTabST)
+		clearTimeout(goTabST);
+
 	dom.queryAll('.bar-header, .content-left, .content-right').addClass('disable-transitions-and-animations');
 
 	if(onReading) reading.progress.save();

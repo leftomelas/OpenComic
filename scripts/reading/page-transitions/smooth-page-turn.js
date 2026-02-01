@@ -74,8 +74,8 @@ async function preparePageTurnPercent(index, prev, current, next, pageTurnDirect
 
 		dom.this(contentRight).find('.reading-transitions-left > div > div, .reading-transitions-right > div > div, .reading-transitions-center > div > div', true).css({zIndex: -1}).setAttribute('class', '');
 
-		zIndexPageTurnBackground = 0;
-		zIndexPageTurnForeground = 99999;
+		// zIndexPageTurnBackground = 0;
+		// zIndexPageTurnForeground = 99999;
 	}
 
 	const pages = await reading.pageTransitions.preparePageTurn(index, current, (pageTurnDirection ? next : prev), false, null, pageTurnDirection, true);

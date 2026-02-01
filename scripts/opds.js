@@ -596,6 +596,8 @@ function downloadOrOpen(link)
 	}
 }
 
+var downloadLink = false;
+
 function downloadDialog(link, confirm = false)
 {
 	downloadLink = link;

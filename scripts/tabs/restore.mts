@@ -1,11 +1,12 @@
 import tabs, {Tab, TabType} from '../tabs.mjs';
 
-declare const app: any;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const dom: any;
 declare const config: any;
 declare const storage: any;
 declare const template: any;
 declare const handlebarsContext: any;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 interface TabSaved {
 	id: number;
@@ -45,7 +46,6 @@ function save(throttle: boolean = true, updateActive: boolean = false): void {
 
 	});
 
-	const first: Tab | undefined = _tabs[0];
 	const set = throttle ? storage.setThrottle : storage.set;
 
 	set('tabs', {
@@ -76,7 +76,6 @@ function restore(openLastActiveTab: boolean = false): void {
 
 	});
 
-	const len = _tabs.length;
 	const first = _tabs[0];
 
 	if(first.data && !rootPage(first.data.history.current) && !openLastActiveTab)
@@ -131,16 +130,17 @@ function restore(openLastActiveTab: boolean = false): void {
 
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function rootPage(current: any): boolean {
 
 	if(!current.root || current.recentlyOpened || current.page)
 		return false;
 
-	const hasLabelsAndFilters = function(object: any): boolean {
+	const hasLabelsAndFilters = function(object: unknown): boolean {
 
-		for(const key in object)
+		for(const key in object!)
 		{
-			const value = object[key];
+			const value = object![key];
 
 			if(typeof value === 'object')
 			{

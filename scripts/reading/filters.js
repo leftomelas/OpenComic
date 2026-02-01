@@ -1018,7 +1018,7 @@ async function checkIsBlackAndWhite(path, sha, index)
 				let diff2 = Math.abs(g - r);
 				let diff3 = Math.abs(b - g);
 
-				s = (diff1 + diff2 + diff3) / 2 / 2.55;
+				const s = (diff1 + diff2 + diff3) / 2 / 2.55;
 
 				saturation.s += s;
 				saturation.n++;

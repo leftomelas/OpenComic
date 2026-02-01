@@ -2088,7 +2088,7 @@ function applyScale(animation = true, scale = 1, center = false, zoomOut = false
 			}
 
 			scrollTop = content.scrollTop;
-			scrollHeight = content.scrollHeight;
+			let scrollHeight = content.scrollHeight;
 
 			let _scale = scalePrevData._scale ? scale / scalePrevData._scale : scale;
 
@@ -5140,7 +5140,7 @@ function mouseenter()
 	isMouseenter.document = true;
 }
 
-function mouseleave()
+function _mouseleave()
 {
 	isMouseenter.document = false;
 }
@@ -5428,7 +5428,7 @@ async function read(path, index = 1, end = false, isCanvas = false, isEbook = fa
 	});*/
 
 	app.event(document, 'mouseenter', mouseenter);
-	app.event(document, 'mouseleave', mouseleave);
+	app.event(document, 'mouseleave', _mouseleave);
 
 	$(window).on('touchstart', function(e) {
 

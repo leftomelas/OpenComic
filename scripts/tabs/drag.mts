@@ -1,7 +1,9 @@
 import tabs, {Tab} from '../tabs.mjs'
 import SimpleEvent from '../simple-event.mjs';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const app: any;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 function moveTabs(mainTab: Tab, goTo: number) {
 

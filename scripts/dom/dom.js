@@ -306,7 +306,7 @@ var _dom = function(_this, string = false, querySelectorAll = false) {
 
 		for(let i = 0, len = this._this.length; i < len; i++)
 		{
-			this._this[i].innerHTML = playmax.text(html);
+			this._this[i].innerHTML = app.text(html);
 		}
 
 		return this;

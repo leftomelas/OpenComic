@@ -3636,7 +3636,7 @@ function getBlob(path)
 	return false;
 }
 
-function revokeObjectURL(path)
+function revokeObjectURL(key)
 {
 	if(!blobObjectsURL[key]) return;
 

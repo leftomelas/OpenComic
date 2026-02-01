@@ -25,7 +25,8 @@
 	"scripts": {
 		"start": "npm run prebuild-start && electron .dist/main.js --no-sandbox",
 		"watch": "tsc --watch",
-		"test": "node .dist/test.js",
+		"test": "npm run eslint && node .dist/test.js",
+		"eslint": "eslint ./scripts",
 		"prebuild": "tsc && npm run test && npm run prebuild-start",
 		"prebuild-mac": "tsc && node .dist/prebuild-mac.js",
 		"prebuild-mac-store": "tsc && node .dist/prebuild-mac.js --store",
@@ -117,13 +118,18 @@
 		"webdav": "^5.8.0"
 	},
 	"devDependencies": {
+		"@eslint/js": "^9.39.2",
 		"@types/electron": "^1.6.12",
 		"electron": "^40.0.0",
 		"electron-builder": "^26.4.0",
 		"env-cmd": "^11.0.0",
+		"eslint": "^9.39.2",
+		"globals": "^17.3.0",
+		"jiti": "^2.6.1",
 		"node-abi": "^4.25.0",
 		"nodemon": "^3.1.11",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.54.0"
 	},
 	"overrides": {
 		"@napi-rs/canvas": "0.0.0",
