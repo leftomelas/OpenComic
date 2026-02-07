@@ -100,15 +100,15 @@ const readingPagesConfig = {
 	readingAi: {
 		artifactRemoval: {
 			active: false,
-			model: '1x-SaiyaJin-DeJpeg',
+			model: 'opencomic-ai-artifact-removal-lite',
 		},
 		descreen: {
 			active: false,
-			model: '1x_halftone_patch_060000_G',
+			model: 'opencomic-ai-descreen-hard-lite',
 		},
 		upscale: {
 			active: false,
-			model: 'realcugan',
+			model: 'realcugan', // opencomic-ai-upscale-lite
 			maxMegapixels: 1.5,
 			scale: 4,
 			noise: 0,
