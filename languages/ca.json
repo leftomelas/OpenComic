@@ -367,7 +367,7 @@
 		"startupBehavior": {
 			"main": "Comportament d'inici",
 			"startInFullScreen": "Inicia OpenComic a pantalla completa",
-			"restoreTabsFromLastSession": "",
+			"restoreTabsFromLastSession": "Restaurar pestanyes de la última sesión",
 			"startInContinueReading": "Iniciar directament a l'última lectura",
 			"startOnlyFromLibrary": "Només si l'última lectura és de la biblioteca",
 			"startOnStartup": "Iniciar OpenComic a l'inici"
