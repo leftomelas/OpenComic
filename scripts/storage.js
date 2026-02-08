@@ -551,10 +551,22 @@ const storageDefault = {
 const syncIgnoreKeys = ['cache', 'tmpUsage'];
 const storageJson = {};
 
+function safeGetPath(name)
+{
+	try
+	{
+		return electronRemote.app.getPath(name);
+	}
+	catch
+	{
+		return '';
+	}
+}
+
 function getDownloadsPath()
 {
 	const macosMAS = (installedFromStore.check() && process.platform == 'darwin') ? true : false;
-	let path = electronRemote.app.getPath('downloads') || '';
+	let path = safeGetPath('downloads') || safeGetPath('documents') || safeGetPath('home') || '';
 
 	if(macosMAS)
 	{
@@ -573,7 +585,7 @@ function getDownloadsPath()
 function getDocumentsPath()
 {
 	const macosMAS = (installedFromStore.check() && process.platform == 'darwin') ? true : false;
-	let path = electronRemote.app.getPath('documents') || '';
+	let path = safeGetPath('documents') || safeGetPath('downloads') || safeGetPath('home') || '';
 
 	if(macosMAS)
 	{
