@@ -41,7 +41,7 @@ async function play(config = {})
 {
 	let start = performance.now();
 
-	const audio = new Audio(config.src);
+	let audio = new Audio(config.src);
 	audio.volume = config.volume;
 
 	let duration = await getAudioDuration(audio);
