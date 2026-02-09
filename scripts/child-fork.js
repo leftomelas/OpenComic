@@ -180,9 +180,21 @@ async function resizeToBlob() {
 
 }
 
+async function metadata() {
+
+	const fork = getFork();
+
+	return fork.work({
+		job: 'metadata',
+		args: [...arguments],
+	});
+
+}
+
 module.exports = {
 	ChildFork,
 	config,
 	_resize,
 	resizeToBlob,
+	metadata,
 };

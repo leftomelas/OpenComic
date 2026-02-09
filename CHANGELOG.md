@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Hide file extension by default [`ad33247`](https://github.com/ollm/OpenComic/commit/ad332470f47b1f110f22ee85a4384f75a19bce99)
 - Support playing background music on a specific page [`23aae8a`](https://github.com/ollm/OpenComic/commit/23aae8abdc8c1bd983411f0f9eeac974218694fa)
 - Options in OPDS to auto-download files from the catalog [`594d69f`](https://github.com/ollm/OpenComic/commit/594d69f81e3740c0be32e284dac3aed1aba69de9)
-- Support for tabs
+- Support for tabs [`d9f7fa0`](https://github.com/ollm/OpenComic/commit/d9f7fa048b743c918c44e077e0bae08705e7b8c0)
 
 ##### 🐛 Bug Fixes
 
@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Hiding cursor in fullscreen mode fails in some cases [`828d504`](https://github.com/ollm/OpenComic/commit/828d504e700e43ab1f6d9e5081195ad496f65920)
 - Save/Copy uses the image under the mouse cursor instead of the active page [`26c5923`](https://github.com/ollm/OpenComic/commit/26c5923d5dc920b691be5db591c20b8b92d9f320)
 - Error saving the progress of the final page in epub files [`ff42c18`](https://github.com/ollm/OpenComic/commit/ff42c181e7a6a324ef1065c836dc0ed175e1b623)
+- Prevent crash when retrieving metadata with Sharp for many large images (Linux only)
 
 ## [v1.6.5](https://github.com/ollm/OpenComic/releases/tag/v1.6.5) (31-10-2025)
 

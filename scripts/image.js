@@ -307,6 +307,14 @@ function loadImage(url, encode = false)
 	});
 }
 
+async function metadata(path)
+{
+	await loadSharp();
+
+	const _sharp = sharp(path);
+	return await _sharp.metadata();
+}
+
 var sizesCache = {};
 
 async function getSizes(images)
@@ -411,13 +419,11 @@ async function getSizes(images)
 					catch(error)
 					{
 						const image = await workers.convertImage(path);
-
-						const _sharp = sharp(image);
-						const metadata = await _sharp.metadata();
+						const _metadata = await metadata(image);
 
 						size = {
-							width: metadata.width,
-							height: metadata.height,
+							width: _metadata.width,
+							height: _metadata.height,
 						};
 					}
 				}
@@ -426,12 +432,13 @@ async function getSizes(images)
 					try
 					{
 						fileManager.macosStartAccessingSecurityScopedResource(image.image);
-						const _sharp = sharp(app.shortWindowsPath(image.image));
-						const metadata = await _sharp.metadata();
+
+						const path = app.shortWindowsPath(image.image);
+						const _metadata = useChildFork ? await childFork.metadata(path) : await metadata(path);
 
 						size = {
-							width: metadata.width,
-							height: metadata.height,
+							width: _metadata.width,
+							height: _metadata.height,
 						};
 					}
 					catch(error)
@@ -460,7 +467,7 @@ async function getSizes(images)
 			}
 			catch(error)
 			{
-				console.error(error);
+				console.error(image.image, error);
 			}
 
 			sizesCache[sha] = size;
@@ -485,5 +492,6 @@ module.exports = {
 	isAnimated: isAnimated,
 	sharpSupportedFormat: sharpSupportedFormat,
 	loadImage: loadImage,
+	metadata: metadata,
 	getSizes: getSizes,
 };

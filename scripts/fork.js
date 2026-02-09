@@ -57,6 +57,29 @@ process.on('message', async function(data) {
 			process.send(message);
 
 			break;
+
+		case 'metadata':
+
+			message = {
+				index: data.index,
+				result: false,
+				error: false,
+			};
+
+			try
+			{
+				const result = await image.metadata(...data.args);
+				message.result = result;
+			}
+			catch(error)
+			{
+				console.log(error);
+				message.error = error.message;
+			}
+
+			process.send(message);
+
+			break;
 	}
 
 });
