@@ -68,7 +68,7 @@ async function search(text)
 
 	for(let i = 0, len = search.length; i < len; i++)
 	{
-		let regexp = new RegExp(this.pregQuote(search[i].trim()), 'i');
+		let regexp = new RegExp(pregQuote(search[i].trim()), 'i');
 		regexps.push(regexp);
 	}
 

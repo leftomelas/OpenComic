@@ -88,6 +88,7 @@ const electron = require('electron'),
 	shortWindowsPath = require('short-windows-path'),
 	$ = require('jquery');
 
+$.isArray = Array.isArray; // Fix for jquery-bez
 require('jquery-bez');
 
 //console.timeEnd('Require time 1');
