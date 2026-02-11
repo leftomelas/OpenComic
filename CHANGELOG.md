@@ -27,7 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Save/Copy uses the image under the mouse cursor instead of the active page [`26c5923`](https://github.com/ollm/OpenComic/commit/26c5923d5dc920b691be5db591c20b8b92d9f320)
 - Error saving the progress of the final page in epub files [`ff42c18`](https://github.com/ollm/OpenComic/commit/ff42c181e7a6a324ef1065c836dc0ed175e1b623)
 - Prevent crash when retrieving metadata with Sharp for many large images (Linux only) [`d5616d8`](https://github.com/ollm/OpenComic/commit/d5616d86bd38841e02bf70d4a2e2502063c45328)
-- Extract files when the file in it starts with the '-' character
+- Extract files when the file in it starts with the '-' character [`3806516`](https://github.com/ollm/OpenComic/commit/38065169d0a7583a7543154fad44351af221a23c)
+- Use reading sort for thumbnail/poster generation
 
 ## [v1.6.5](https://github.com/ollm/OpenComic/releases/tag/v1.6.5) (31-10-2025)
 

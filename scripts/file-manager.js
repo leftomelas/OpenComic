@@ -556,7 +556,7 @@ var file = function(path, _config = false) {
 	// Get the first images of a folder/compressed
 	this.images = async function(only = 1, from = false, findPoster = false, _files = false, _path = false, _isCompressed = false) {
 
-		this.updateConfig({filtered: false});
+		this.updateConfig({filtered: false, sort: {extraKey: 'Reading'}});
 
 		// Find poster in the same folder where the folder/file is located
 		if(findPoster)
@@ -675,7 +675,7 @@ var file = function(path, _config = false) {
 		try
 		{
 			const file = fileManager.file(dirname);
-			file.updateConfig({fastRead: true, filtered: false, sha: false, cacheServer: true});
+			file.updateConfig({fastRead: true, filtered: false, sha: false, cacheServer: true, sort: {extraKey: 'Reading'}});
 			const files = await file.read();
 			file.destroy();
 
